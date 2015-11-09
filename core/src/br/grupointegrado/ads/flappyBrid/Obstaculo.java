@@ -54,12 +54,12 @@ public class Obstaculo {
         largura = 40 / Util.PIXEL_METRO;
         altura = camera.viewportHeight / Util.PIXEL_METRO;
 
-        float xInicial = largura;
+        float xInicial = largura + (camera.viewportWidth / 2 / Util.PIXEL_METRO);
         if(ultimoObstaculo != null)
             xInicial = ultimoObstaculo.getPosX();
 
 
-        posX = xInicial + 8; //e o espaco entre os obstaculo
+        posX = xInicial + 4; //4 e o espaco entre os obstaculo
 
         float parcela = (altura - Util.ALTURA_CHAO) / 6; //tamanho da tela divido por 6, para encontrar a posicao do y do obstaculo
 
@@ -68,12 +68,42 @@ public class Obstaculo {
         posYcima = posYbaixo + altura + 2f;//2f espaco entre  os canos
     }
 
-    private float getPosX() {
-        return  this.posX;
-    }
+
 
     public void  remover(){
         mundo.destroyBody(corpoCima);
         mundo.destroyBody(corpoBaixo);
+    }
+
+    public float getPosX() {
+        return posX;
+    }
+
+    public void setPosX(float posX) {
+        this.posX = posX;
+    }
+
+    public float getLargura() {
+        return largura;
+    }
+
+    public void setLargura(float largura) {
+        this.largura = largura;
+    }
+
+    public float getAltura() {
+        return altura;
+    }
+
+    public void setAltura(float altura) {
+        this.altura = altura;
+    }
+
+    public boolean isPassou() {
+        return passou;
+    }
+
+    public void setPassou(boolean passou) {
+        this.passou = passou;
     }
 }
